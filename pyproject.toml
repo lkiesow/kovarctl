@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "kovarctl"
+version = "0.1.0"
+description = "Control the lighting of KOVAR keyboards (ROYUAN YC500 firmware) on Linux"
+readme = "README.md"
+license = "MIT"
+authors = [{ name = "Lars Kiesow", email = "lars.kiesow@uni-osnabrueck.de" }]
+requires-python = ">=3.9"
+dependencies = ["click>=8"]
+
+[project.scripts]
+kovarctl = "kovarctl.cli:main"
+
+[tool.setuptools]
+packages = ["kovarctl"]
