@@ -16,8 +16,10 @@ The 2.4 GHz dongle (`3151:4011`) is not supported, because it uses a different p
 ## Installation
 
 ```sh
-pip install --user .
+pipx install kovarctl
 ```
+
+`pip install --user kovarctl` and `uv tool install kovarctl` work as well.
 
 The only dependency is [click](https://click.palletsprojects.com/). Your user needs access to the keyboard's `/dev/hidraw*` nodes. Desktop sessions usually grant it, and the OpenRGB udev rules do too.
 
@@ -84,10 +86,37 @@ The blue LED between Esc and F1 cannot be controlled.
 
 ## Development
 
+Install from a checkout of the repository and run the tests:
+
 ```sh
+pip install -e . pytest
 python3 -m pytest
 ```
 
 ## License
 
-MIT, see [LICENSE](LICENSE).
+MIT, see [LICENSE](https://github.com/lkiesow/kovarctl/blob/main/LICENSE).
+
+## Releasing
+
+1. Set the new version in `pyproject.toml`, commit and tag it:
+
+   ```sh
+   git commit -am 'Release 0.2.0'
+   git tag v0.2.0
+   ```
+
+2. Build the packages and check them, in a virtual environment:
+
+   ```sh
+   rm -rf dist/
+   python3 -m build
+   twine check --strict dist/*
+   ```
+
+3. Upload to [PyPI](https://pypi.org/project/kovarctl/) and push the tag:
+
+   ```sh
+   twine upload dist/*
+   git push origin main v0.2.0
+   ```
