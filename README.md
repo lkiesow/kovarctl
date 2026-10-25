@@ -45,6 +45,30 @@ kovarctl recover                                 # if the keyboard stopped answe
 
 Use `--dry-run` to see what would be written, `-v` to report flash writes, and `--device` or `--id` to choose a keyboard when several are connected.
 
+## Shell completion
+
+kovarctl can complete commands, effect names and option values such as `--direction`. This needs the installed `kovarctl` command; it does not work with `python3 -m kovarctl`.
+
+**Bash** (version 4.4 or newer), add to `~/.bashrc`:
+
+```sh
+eval "$(_KOVARCTL_COMPLETE=bash_source kovarctl)"
+```
+
+**Zsh**, add to `~/.zshrc` after `compinit` has run (frameworks like Oh My Zsh run it for you):
+
+```sh
+eval "$(_KOVARCTL_COMPLETE=zsh_source kovarctl)"
+```
+
+**Fish**, add to `~/.config/fish/config.fish`:
+
+```sh
+_KOVARCTL_COMPLETE=fish_source kovarctl | source
+```
+
+Open a new shell afterwards. The completion is generated each time a shell starts (about 30 ms), so it always matches the installed version.
+
 ## Keyboard flash
 
 The keyboard stores effect settings, the side light and the custom picture in its flash memory. Each write keeps the firmware busy for up to 1.4 seconds. During that time the keyboard ignores requests and can even lock up its lighting interface. kovarctl protects the keyboard in four ways:
