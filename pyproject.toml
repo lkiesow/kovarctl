@@ -9,7 +9,7 @@ description = "Control the lighting of KOVAR keyboards (ROYUAN YC500 firmware) o
 readme = "README.md"
 license = "MIT"
 authors = [{ name = "Lars Kiesow", email = "lars.kiesow@uni-osnabrueck.de" }]
-requires-python = ">=3.9"
+requires-python = ">=3.13"
 dependencies = ["click>=8"]
 
 [project.scripts]
