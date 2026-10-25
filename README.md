@@ -63,3 +63,7 @@ The blue LED between Esc and F1 cannot be controlled.
 ```sh
 python3 -m pytest
 ```
+
+## License
+
+MIT, see [LICENSE](LICENSE).
